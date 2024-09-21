@@ -1,0 +1,20 @@
+{
+    'name': 'Hospitals Management System',
+    'summary': 'Comprehensive software platform designed to manage the operations and workflow of a hospital or healthcare facility',
+    'description': 'A Hospitals Management System (HMS) is software that streamlines hospital operations, including patient registration, appointments, billing, medical records, and inventory. It enhances efficiency, reduces paperwork, and improves patient care by managing key administrative and clinical tasks.',
+    'author': 'Ahmed Nabil',
+    'category': 'Productivity',
+    'version': '17.0.0.1.0',
+    'depends': ['base', 'crm'],
+    'application': True,
+    'data': [
+        'security/group.xml',
+        'security/ir.model.access.csv',
+        'views/base_menus.xml',
+        'views/department.xml',
+        'views/doctors.xml',
+        'views/patients.xml',
+        'views/customer.xml',
+        'wizard/add_new_log_wizard_view.xml',
+             ],
+}

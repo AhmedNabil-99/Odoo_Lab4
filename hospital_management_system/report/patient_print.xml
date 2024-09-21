@@ -1,0 +1,91 @@
+<odoo>
+    <record id="patient_print" model="ir.actions.report">
+        <field name="name">Patient Print</field>
+        <field name="model">hms.patient</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">hospital_management_system.model_hms_patient</field>
+        <field name="report_file">hospital_management_system.model_hms_patient</field>
+        <field name="binding_model_id" ref="hospital_management_system.model_hms_patient"/>
+        <field name="binding_type">report</field>
+        <field name="print_report_name">patient</field>
+    </record>
+
+    <template id="patient_print_template">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <div class="row">
+                          <div class="col-12">
+                            <h1 class="text-center">Patient Status Report</h1>
+                          </div>
+                        </div>
+                        <div class="row mt-3">
+                          <div class="col-md-6">
+                            <div class="mb-2">
+                              <span>Name:</span>
+                              <span t-esc="doc['name']"/>
+                            </div>
+                            <div class="mb-2">
+                              <span>Age:</span>
+                              <span t-esc="doc['age']"/>
+                            </div>
+                            <div class="mb-2">
+                              <span>Department:</span>
+                              <span t-esc="doc['department']"/>
+                            </div>
+                            <div class="mb-2">
+                              <span>Doctors:</span>
+                              <span t-esc="doc['doctors']"/>
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="mb-2">
+                              <span>Birth date:</span>
+                              <span t-esc="doc['birth_date']"/>
+                            </div>
+                            <div class="mb-2">
+                              <span>PCR:</span>
+                              <span t-esc="doc['pcr']"/>
+                            </div>
+                            <div class="mb-2">
+                              <span>Blood Type:</span>
+                              <span t-esc="doc['blood_type']"/>
+                            </div>
+                            <div class="mb-2">
+                              <span>Email:</span>
+                              <span t-esc="doc['email']"/>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row mt-3">
+                          <div class="col-12">
+                            <h2>Log History</h2>
+                          </div>
+                        </div>
+                        <div class="row mt-3">
+                          <div class="col-12">
+                            <table class="table table-striped">
+                              <thead>
+                                <tr>
+                                  <th>User</th>
+                                  <th>Date</th>
+                                  <th>Info</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr t-foreach="doc['history']" t-as="h">
+                                  <td><span t-esc="h['user']"/></td>
+                                  <td><span t-esc="h['date']"/></td>
+                                  <td><span t-esc="h['info']"/></td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>
