@@ -5,7 +5,8 @@ from odoo.exceptions import ValidationError
 class Customer(models.Model):
     _inherit = 'res.partner'
 
-    related_patient_id = fields.Many2one('hms.patient')
+    related_patient_id = fields.Many2one('hms.patient', string="Related Patient")
+
 
     @api.constrains('vat')
     def _check_tax(self):
